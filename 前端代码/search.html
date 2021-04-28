@@ -1,0 +1,109 @@
+
+<!--
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/11/26
+Version : 0.1
+All Rights Reserved.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>诗词博物馆-搜索&nbsp;|&nbsp;Search</title>
+		<link rel="shortcut icon" type="image/x-icon" href="images/icons/search.ico"/>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"/>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"/>
+	</head>
+	<body>
+
+		<div id="search_page" style="display:none;">
+			<div id="nav">
+				<div id="nav_logo" @click="new_nav('main')"></div>
+				<div id="nav_content">
+					<ul id="nav_content_ul">
+						<li @click="new_nav('search')"><i class="fa fa-search"></i>尔雅集</li>
+						<li @click="new_nav('study_index')"><i class="fa fa-graduation-cap"></i>沧海鉴</li>
+						<li @click="new_nav('exam_index')"><i class="fa fa-pencil-square-o"></i>青衿行</li>
+						<li @click="new_nav('grade_index')"><i class="fa fa-wechat"></i>月旦评</li>
+						<li @click="new_nav('college_index')" style="border-right-style:none;">
+							<i class="fa fa-trophy"></i>兰亭会
+						</li>
+						<li id="nav_state" v-show="!is_log_in">
+							<span id="nav_log_in" @click="new_nav('log_in')">登录</span>/
+							<span id="nav_sign_up" @click="new_nav('sign_up')">注册</span>
+						</li>
+						<img id="nav_avatar" v-show="is_log_in" src="images/demo/avatar.jpg" class="round_icon">
+					</ul>
+				</div>
+			</div>
+			<div id="mainbody">
+				<div v-show="result_display" class="profile-card-wrap">
+					<input id="check" type="checkbox" class="check">
+					<label @click="change_box_display" for="check" class="toggle" title="点击展开"> + </label>
+					<div class="content">
+						<div class="title">{{ result_title }}</div>
+						<div class="intro" style="font-size:12px;">
+							<p id="intro_p">{{ result_content }}</p>
+							<p id="intro_q"></p>
+						</div>
+					</div>
+					<div class="link-info">
+						<div v-show="false" class="social">
+							<a class="link cp" href="#" target="_blank"><i class="fa fa-codepen"></i></a>
+							<a class="link pi" href="#" target="_blank"><i class="fa fa-share"></i></a>
+							<a class="link li" href="#" target="_blank"><i class="fa fa-weixin"></i></a>
+						</div>
+						<div class="photo"></div>
+					</div>
+				</div>
+				<div style="width:800px;">
+					<div class="navbar" style="margin-top:-380px; margin-left:360px;">
+						<i class="fa fa-search"></i>
+						<ul class="menu">
+							<li>
+								<div id="container1">
+									<input v-model="user_input_content" @keyup.enter="search_by_content" type="text" placeholder="按内容检索...（回车发起）">
+									<div id="search1"></div>
+								</div>
+							</li>
+							<li>
+								<div id="container2">
+									<input v-model="user_input_name" @keyup.enter="search_by_name" type="text" placeholder="按作者检索...">
+									<div id="search2"></div>
+								</div>
+							</li>
+							<li>
+								<div id="container3">
+									<input v-model="user_input_title" @keyup.enter="search_by_title" type="text" placeholder="按诗题检索...（回车发起）">
+									<div id="search3"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/globe.js"></script>
+		<script src="js/search.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.ripples.js"></script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			var fileref = document.createElement('link');
+			fileref.setAttribute("rel","stylesheet");
+			fileref.setAttribute("type","text/css");
+			if(active == "dev") {
+				fileref.setAttribute("href","css/dev_search.css");
+			}
+			else if(active == "pro") {
+				fileref.setAttribute("href","css/pro_search.css");
+			}
+			document.getElementsByTagName("head")[0].appendChild(fileref);
+		</script>
+
+	</body>
+</html>

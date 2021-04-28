@@ -1,0 +1,128 @@
+
+<!--
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/11/24
+Version : 0.1
+All Rights Reserved.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>诗词博物馆-注册&nbsp;|&nbsp;Sign&nbsp;Up</title>
+		<link rel="shortcut icon" type="image/x-icon" href="images/icons/sign_up.ico"/>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+	</head>
+
+	<body>
+
+		<div id="sign_up_page" style="display:none;">
+			<div id="nav">
+				<div id="nav_logo" @click="new_nav('main')"></div>
+				<div id="nav_content">
+					<ul id="nav_content_ul">
+						<li @click="new_nav('search')"><i class="fa fa-search"></i>尔雅集</li>
+						<li @click="new_nav('study_index')"><i class="fa fa-graduation-cap"></i>沧海鉴</li>
+						<li @click="new_nav('exam_index')"><i class="fa fa-pencil-square-o"></i>青衿行</li>
+						<li @click="new_nav('grade_index')"><i class="fa fa-wechat"></i>月旦评</li>
+						<li @click="new_nav('college_index')" style="border-right-style:none;">
+							<i class="fa fa-trophy"></i>兰亭会
+						</li>
+						<li id="nav_state">已有账号，我要
+							<span id="nav_log_in" @click="new_nav('log_in')">登录</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="mainbody">
+				<div id="registration">
+					<br/><br/><br/><br/><br/>
+					<div>
+						<el-input class="register_input" placeholder="请设置用户名"
+							prefix-icon="el-icon-user" v-model="user_name">
+						</el-input>
+					</div>
+					<br/>
+					<div>
+						<el-input class="register_input" placeholder="请设置密码"
+							prefix-icon="el-icon-lock" v-model="user_password" show-password>
+						</el-input>
+					</div>
+					<br/>
+					<div>
+						<el-input class="register_input" placeholder="请确认密码"
+							prefix-icon="el-icon-lock" v-model="user_password_confirm" show-password>
+						</el-input>
+					</div>
+					<br/>
+					<div>
+						<el-input class="register_input" placeholder="请输入手机号"
+							prefix-icon="el-icon-mobile-phone" v-model="user_phone_number">
+						</el-input>
+					</div>
+					<br/>
+					<div id="verification_code">
+						<el-input placeholder="请输入验证码" prefix-icon="el-icon-key"
+							v-model="user_verification_code" style="vertical-align:middle;">
+						</el-input>
+						<el-button @click="count_down" type="danger" icon="el-icon-key" plain circle></el-button>
+					</div>
+					<div id="verification_code_tip">
+						{{ countdown_seconds_appear? countdown_seconds + "s后再次获取" : "&nbsp;" }}
+					</div>
+					<br/>
+					<img @click="register" src="images/registration_button.png" style="cursor:pointer;">
+				</div>
+				<div id="bottom">
+					<div style="width:200px"></div>
+					<div class="bottom_item1">
+						<div style="height:60px; line-height:60px;">服务</div>
+						<a href="#" class="links">首页</a>
+						<a href="#" class="links">反馈</a>
+					</div>
+					<div class="bottom_item1">
+						<div style="height:60px; line-height:60px;">开源</div>
+						<a href="#" class="links">Github</a>
+						<a href="#" class="links">eJudge</a>
+					</div>
+					<div class="bottom_item2">
+						<div style="height:60px; line-height:60px;">关于我们</div>
+						<div id="bottom_item2_lines">
+							<b style="color:#A9A9A9">&nbsp;&nbsp;&nbsp;&nbsp;前端开发：</b>
+							<a href="#" class="links" @click="about_us('eth')">@10175101159</a>
+							<b style="color:#A9A9A9">,</b>
+							<a href="#" class="links" @click="about_us('rwn')">@10185102105</a>
+						</div>
+						<div id="bottom_item2_lines">
+							<b style="color:#A9A9A9">&nbsp;&nbsp;&nbsp;&nbsp;后端开发：</b>
+							<a href="#" class="links" @click="about_us('wvn')">@10185102113</a>
+							<b style="color:#A9A9A9">,</b>
+							<a href="#" class="links" @click="about_us('wvn')">@10185102113</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/globe.js"></script>
+		<script src="js/sign_up.js"></script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			var fileref = document.createElement('link');
+			fileref.setAttribute("rel","stylesheet");
+			fileref.setAttribute("type","text/css");
+			if(active == "dev") {
+				fileref.setAttribute("href","css/dev_sign_up.css");
+			}
+			else if(active == "pro") {
+				fileref.setAttribute("href","css/pro_sign_up.css");
+			}
+			document.getElementsByTagName("head")[0].appendChild(fileref);
+		</script>
+
+	</body>
+</html>

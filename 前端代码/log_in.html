@@ -1,0 +1,121 @@
+
+<!--
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/11/27
+Version : 0.1
+All Rights Reserved.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>诗词博物馆-登录&nbsp;|&nbsp;Log&nbsp;In</title>
+		<link rel="shortcut icon" type="image/x-icon" href="images/icons/log_in.ico"/>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"/>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"/>
+	</head>
+
+	<body>
+
+		<div id="log_in_page" style="display:none;">
+			<div id="nav">
+				<div id="nav_logo" @click="new_nav('main')"></div>
+				<div id="nav_content">
+					<ul id="nav_content_ul">
+						<li @click="new_nav('search')"><i class="fa fa-search"></i>尔雅集</li>
+						<li @click="new_nav('study_index')"><i class="fa fa-graduation-cap"></i>沧海鉴</li>
+						<li @click="new_nav('exam_index')"><i class="fa fa-pencil-square-o"></i>青衿行</li>
+						<li @click="new_nav('grade_index')"><i class="fa fa-wechat"></i>月旦评</li>
+						<li @click="new_nav('college_index')" style="border-right-style:none;">
+							<i class="fa fa-trophy"></i>兰亭会
+						</li>
+						<li id="nav_state">没有账号，我要
+							<span id="nav_sign_up" @click="new_nav('sign_up')">注册</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="mainbody">
+				<div id="log_in_area">
+					<div id="log_in_area_nav">
+						<ul id="log_in_ul">
+							<li @click="turn_password_login"><i class="fa fa-key"></i>&nbsp;密码登录</li>
+							<li @click="turn_verification_login" style="border-right-style:none;">
+								<i class="fa fa-tablet"></i>&nbsp;手机登录
+							</li>
+						</ul>
+					</div>
+					<div class="log_in_area_body" v-show="is_password_login">
+						<br/>
+						<div style="text-align:center;">
+							<el-input class="login_input" placeholder="请输入用户名"
+								prefix-icon="el-icon-user" v-model="user_name">
+							</el-input>
+						</div>
+						<br/>
+						<div style="text-align:center;">
+							<el-input class="login_input" placeholder="请输入密码"
+								prefix-icon="el-icon-lock" v-model="user_password" show-password>
+							</el-input>
+						</div>
+						<br/>
+						<div style="text-align: center;">
+							<el-button @click="log_in" type="primary" plain style="width:170px;">现在登录</el-button>
+						</div>
+						<!-- 后端暂未实现功能 -->
+						<div style="color:#FF0000">
+							注意： 目前暂不支持用户名密码登陆，开发阶段请使用手机号密码登陆进行测试，
+							测试账号18250337185，测试密码123456
+						</div>
+					</div>
+					<div class="log_in_area_body" v-show="!is_password_login">
+						<br/>
+						<div style="text-align: center;">
+							<el-input class="login_input" placeholder="请输入手机号"
+								prefix-icon="el-icon-user" v-model="user_phone_number">
+							</el-input>
+						</div>
+						<br/>
+						<div style="text-align: center;">
+							<el-input class="login_input" placeholder="请输入验证码"
+								prefix-icon="el-icon-lock" v-model="user_verification_code" show-password>
+							</el-input>
+						</div>
+						<br/>
+						<div style="text-align: center;">
+							<el-button type="primary" plain style="width:170px;">现在登录</el-button>
+						</div>
+						<div>
+							<el-button @click="count_down">获取验证码</el-button>
+							<div id="verification_code_tip">
+								{{ countdown_seconds_appear? countdown_seconds + "s后再次获取" : "&nbsp;" }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/globe.js"></script>
+		<script src="js/log_in.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.ripples.js"></script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			var fileref = document.createElement('link');
+			fileref.setAttribute("rel","stylesheet");
+			fileref.setAttribute("type","text/css");
+			if(active == "dev") {
+				fileref.setAttribute("href","css/dev_log_in.css");
+			}
+			else if(active == "pro") {
+				fileref.setAttribute("href","css/pro_log_in.css");
+			}
+			document.getElementsByTagName("head")[0].appendChild(fileref);
+		</script>
+
+	</body>
+</html>

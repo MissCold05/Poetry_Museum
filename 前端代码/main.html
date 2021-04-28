@@ -1,0 +1,185 @@
+
+<!--
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/11/28
+Version : 0.1
+All Rights Reserved.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>诗词博物馆&nbsp;|&nbsp;Home</title>
+		<link rel="shortcut icon" type="image/x-icon" href="images/icons/main.ico"/>
+		<link rel="stylesheet prefetch" href="http://fonts.googleapis.com/css?family=Open+Sans"/>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"/>
+	</head>
+	<body translate="no" style="background-color:#FAF3F1;">
+
+		<div id="main_page" style="display:none;">
+			<div id="nav">
+				<div id="nav_logo" @click="new_nav('main')"></div>
+				<div id="nav_content">
+					<ul>
+						<li @click="new_nav('search')"><i class="fa fa-search"></i>尔雅集</li>
+						<li @click="new_nav('study_index')"><i class="fa fa-graduation-cap"></i>沧海鉴</li>
+						<li @click="new_nav('exam_index')"><i class="fa fa-pencil-square-o"></i>青衿行</li>
+						<li @click="new_nav('grade_index')"><i class="fa fa-wechat"></i>月旦评</li>
+						<li @click="new_nav('college_index')" style="border-right-style:none;">
+							<i class="fa fa-trophy"></i>兰亭会
+						</li>
+						<li id="nav_state" v-show="!is_log_in">
+							<span id="nav_log_in" @click="new_nav('log_in')">登录</span>/
+							<span id="nav_sign_up" @click="new_nav('sign_up')">注册</span>
+						</li>
+						<img id="nav_avatar" @click="new_nav('home')" v-show="is_log_in" class="round_icon"></img>
+					</ul>
+				</div>
+			</div>
+			<div class="cont s--inactive">
+				<div class="cont__inner">
+					<div class="el">
+						<div class="el__overflow">
+							<div class="el__inner">
+								<div class="el__bg"></div>
+								<div class="el__preview-cont">
+									<h2 class="el__heading" style="color:#000000;">ERYAJI</h2>
+								</div>
+								<div class="el__content">
+									<div class="el__text">Whatever</div>
+									<div class="el__close-btn"></div>
+								</div>
+							</div>
+						</div>
+						<div class="el__index">
+							<div class="el__index-back">1</div>
+							<div class="el__index-front">
+								<div class="el__index-overlay" data-index="1">1</div>
+							</div>
+						</div>
+					</div>
+					<div class="el">
+						<div class="el__overflow">
+							<div class="el__inner">
+								<div class="el__bg"></div>
+								<div class="el__content">
+									<div class="el__text"></div>
+									<div class="el__close-btn"></div>
+								</div>
+							</div>
+						</div>
+						<div class="el__index">
+							<div class="el__index-back">2</div>
+							<div class="el__index-front">
+								<div class="el__index-overlay" data-index="2">2</div>
+							</div>
+						</div>
+					</div>
+					<div class="el">
+						<div class="el__overflow">
+							<div class="el__inner">
+								<div class="el__bg"></div>
+								<div class="el__content">
+									<div class="el__text"></div>
+									<div class="el__close-btn"></div>
+								</div>
+							</div>
+						</div>
+						<div class="el__index">
+							<div class="el__index-back">3</div>
+							<div class="el__index-front">
+								<div class="el__index-overlay" data-index="3">3</div>
+							</div>
+						</div>
+					</div>
+					<div class="el">
+						<div class="el__overflow">
+							<div class="el__inner">
+								<div class="el__bg"></div>
+								<div class="el__content">
+									<div class="el__text">Whatever</div>
+									<div class="el__close-btn"></div>
+								</div>
+							</div>
+						</div>
+						<div class="el__index">
+							<div class="el__index-back">4</div>
+							<div class="el__index-front">
+								<div class="el__index-overlay" data-index="4">4</div>
+							</div>
+						</div>
+					</div>
+					<div class="el">
+						<div class="el__overflow">
+							<div class="el__inner">
+								<div class="el__bg"></div>
+								<div class="el__content">
+									<div class="el__text">Whatever</div>
+									<div class="el__close-btn"></div>
+								</div>
+							</div>
+						</div>
+						<div class="el__index">
+							<div class="el__index-back">5</div>
+							<div class="el__index-front">
+								<div class="el__index-overlay" data-index="5">5</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bottom">
+				<div style="width:200px"></div>
+				<div class="bottom_item1">
+					<div style="height:60px; line-height:60px;">服务</div>
+					<a href="#" class="links">首页</a>
+					<a href="#" class="links">反馈</a>
+				</div>
+				<div class="bottom_item1">
+					<div style="height:60px; line-height:60px;">开源</div>
+					<a href="#" class="links">Github</a>
+					<a href="#" class="links">eJudge</a>
+				</div>
+				<div class="bottom_item2">
+					<div style="height:60px; line-height:60px;">关于我们</div>
+					<div id="bottom_item2_lines">
+						<b style="color:#A9A9A9">&nbsp;&nbsp;&nbsp;&nbsp;前端开发：</b>
+						<a href="#" class="links" @click="about_us('eth')">@10175101159</a>
+						<b style="color:#A9A9A9">,</b>
+						<a href="#" class="links" @click="about_us('rwn')">@10185102105</a>
+					</div>
+					<div id="bottom_item2_lines">
+						<b style="color:#A9A9A9">&nbsp;&nbsp;&nbsp;&nbsp;后端开发：</b>
+						<a href="#" class="links" @click="about_us('wvn')">@10175101159</a>
+						<b style="color:#A9A9A9">,</b>
+						<a href="#" class="links" @click="about_us('wvn')">@10185102105</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/globe.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/stopExecutionOnTimeout.js"></script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			var fileref = document.createElement('link');
+			fileref.setAttribute("rel","stylesheet");
+			fileref.setAttribute("type","text/css");
+			if(active == "dev") {
+				fileref.setAttribute("href","css/dev_main.css");
+			}
+			else if(active == "pro") {
+				fileref.setAttribute("href","css/dev_main.css");
+			}
+			document.getElementsByTagName("head")[0].appendChild(fileref);
+		</script>
+
+	</body>
+</html>

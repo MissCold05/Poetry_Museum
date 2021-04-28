@@ -1,0 +1,84 @@
+
+<!--
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/11/06
+Version : 0.1
+All Rights Reserved.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+		<title>诗词博物馆-青衿行</title>
+		<link rel="shortcut icon" type="image/x-icon" href="images/icons/exam_content.ico"/>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Economica:700,400italic"/>
+		<link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+	</head>
+	<body>
+		<div id="exam_content_page" style="display:none;">
+			<div id="nav">
+				<div id="nav_logo" @click="new_nav('main')"></div>
+				<div id="nav_content">
+					<ul id="nav_content_ul">
+						<li @click="new_nav('search')"><i class="fa fa-search"></i>尔雅集</li>
+						<li @click="new_nav('study_index')"><i class="fa fa-graduation-cap"></i>沧海鉴</li>
+						<li @click="new_nav('exam_index')"><i class="fa fa-pencil-square-o"></i>青衿行</li>
+						<li @click="new_nav('grade_index')"><i class="fa fa-wechat"></i>月旦评</li>
+						<li @click="new_nav('college_index')" style="border-right-style:none;">
+							<i class="fa fa-trophy"></i>兰亭会
+						</li>
+						<li id="nav_state" v-show="!is_log_in">
+							<span id="nav_log_in" @click="new_nav('log_in')">登录</span>
+							<span id="nav_sign_up" @click="new_nav('sign_up')">注册</span>
+						</li>					
+					</ul>
+				</div>
+			</div>
+			<div class="block">
+				<el-carousel trigger="click" height="250px" :interval="3000000" indicator-position="none">
+					<el-carousel-item class="question" v-for="(question,index) in quiz" :key="index" ref="carousel">
+						<div class="statement">{{ index + 1 }}.&nbsp;{{ question.statement }}</div>
+						<div class="option" v-for="(option,index) in question.options" :key="index">
+							<br/><el-radio v-model="question.answer" :label="index">{{ option }}</el-radio>
+						</div>
+					</el-carousel-item>
+				</el-carousel>
+				<div v-for="(question,index) in quiz" :key="index" style="width:70px; display:inline-block;">
+					<el-button v-show="question.answer!==''" size="mini" icon="el-icon-s-flag" circle type="success"></el-button>
+					<el-button v-show="question.answer===''" size="mini" icon="el-icon-edit" circle></el-button>
+				</div><br/><br/><br/>
+				<div>
+					<el-button type="primary" plain icon="el-icon-time">{{ countdown_time }}</el-button>
+					<el-button type="primary" plain @click="submit">我要交卷</el-button>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/globe.js"></script>
+		<script src="js/exam_content.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.cslider.js"></script>
+		<script src="js/modernizr.custom.28468.js"></script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			var fileref = document.createElement('link');
+			fileref.setAttribute("rel","stylesheet");
+			fileref.setAttribute("type","text/css");
+			if(active == "dev") {
+				fileref.setAttribute("href","css/dev_exam_content.css");
+			}
+			else if(active == "pro") {
+				fileref.setAttribute("href","css/pro_exam_content.css");
+			}
+			document.getElementsByTagName("head")[0].appendChild(fileref);
+		</script>
+
+	</body>
+</html>

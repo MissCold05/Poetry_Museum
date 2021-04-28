@@ -1,0 +1,143 @@
+
+<!--
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/12/02
+Version : 0.1
+All Rights Reserved.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>诗词博物馆-月旦评</title>
+		<link rel="shortcut icon" type="image/x-icon" href="images/icons/grade_content.ico"/>
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"/>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"/>
+	</head>
+	<body>
+
+		<div id="grade_content_page" style="display:none;">
+			<div id="grade_content_page_nav">
+				<div id="nav">
+					<div id="nav_logo" @click="new_nav('main')"></div>
+					<div id="nav_content">
+						<ul id="nav_content_ul">
+							<li @click="new_nav('search')"><i class="fa fa-search"></i>尔雅集</li>
+							<li @click="new_nav('study_index')"><i class="fa fa-graduation-cap"></i>沧海鉴</li>
+							<li @click="new_nav('exam_index')"><i class="fa fa-pencil-square-o"></i>青衿行</li>
+							<li @click="new_nav('grade_index')"><i class="fa fa-wechat"></i>月旦评</li>
+							<li @click="new_nav('college_index')" style="border-right-style:none;">
+								<i class="fa fa-trophy"></i>兰亭会
+							</li>
+							<li id="nav_state" v-show="!is_log_in">
+								<span id="nav_log_in" @click="new_nav('log_in')">登录</span>/
+								<span id="nav_sign_up" @click="new_nav('sign_up')">注册</span>
+							</li>
+							<img id="nav_avatar" v-show="is_log_in" src="images/demo/avatar.jpg" class="round_icon">
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div style="position:fixed; top:50px; left:0px; display:flex; flex-direction:row; width:100%; height:90vh;">
+				<div id="grade_content_page_author" style="width:17%;">
+					<div class="author" style="display:flex; flex-direction:row;">
+						<div style="width:50%; text-align:center;">
+							<el-avatar :size="70" src="images/grade_content/susu.jpg"></el-avatar>
+						</div>
+						<div style="width:50%;">
+							</br><h3>寒清鉴</h3>
+						</div>
+					</div>
+					<div style="padding:20px;">
+						<div style="display:flex; flex-direction:row; height:60px; line-height:60px;">
+							<div class="heart" id="like1" rel="like"></div><p>喜欢</p>
+						</div></br>
+						<el-rate v-model="value" show-text :texts="rate"></el-rate></br>
+						<el-button :disabled="this.value==0" @click="submit_rate">提交评分</el-button>
+					</div>
+				</div>
+				<div style="width:60%; font-family:'FangSong';">
+					<h2 style="font-family:SimHei; margin-top:2vh;">当年万里觅封侯，匹马戍梁州</h2></br>
+					<div class="custom-scroll">
+						<p>
+							此词描写了作者一生中最值得怀念的一段岁月，通过今昔对比，反映了一位爱国志士的坎坷经历和不幸遭遇，表达了作者壮志未酬、报国无门的悲愤不平之情。上片开头追忆作者昔日戎马疆场的意气风发，接写当年宏愿只能在梦中实现的失望；下片抒写敌人尚未消灭而英雄却已迟暮的感叹。全词格调苍凉悲壮，语言明白晓畅，用典自然，不着痕迹，不加雕饰，如叹如诉，有较强的艺术感染力。
+						</p>
+						<p>
+							“当年万里觅封侯，匹马戍梁州”，开头两句，词人再现了往日壮志凌云，奔赴抗敌前线的勃勃英姿。“当年”，指1172年（乾道八年），在那时陆游来到南郑（今陕西汉中），投身到四川宣抚使王炎幕下。在前线，他曾亲自参加过对金兵的遭遇战。“觅封候”用班超投笔从戎、立功异域“以取封侯”的典故，写自己报效祖国，收拾旧河山的壮志。“自许封侯在万里”（《夜游宫·记梦寄师伯浑》），一个“觅”字显出词人当年的自许、自负、自信的雄心和坚定执着的追求精神。“万里”与“匹马”形成空间形象上的强烈对比，匹马征万里，“壮岁从戎，曾是气吞残虏”（《谢池春·壮岁从戎》），呈现出一派卓荦不凡之气。“悲歌击筑，凭高酹酒”（《秋波媚·七月十六日晚登高兴亭望长安南山》），“呼鹰古垒，截虎平川”（《汉宫春·初自南郑来成都作》），那豪雄飞纵、激动人心的军旅生活至今历历在目，时时入梦，之所以会这样，是因为强烈的愿望受到太多的压抑，积郁的情感只有在梦里才能得到宣泄。
+						</p>
+						<p>
+							“关河梦断何处，尘暗旧貂裘”，在南郑前线仅半年，陆游就被调离，从此关塞河防，只能时时在梦中达成愿望，而梦醒不知身何处，只有旧时貂裘戎装，而且已是尘封色暗。一个“暗”字将岁月的流逝，人事的消磨，化作灰尘堆积之暗淡画面，心情饱含惆怅。
+						</p>
+						<p>
+							上片开头以“当年”二字楔入往日豪放军旅生活的回忆，声调高亢，“梦断”一转，形成一个强烈的情感落差，慷慨化为悲凉。至下片则进一步抒写理想与现实的矛盾，跌入更深沉的浩叹，悲凉化为沉郁。
+						</p>
+						<p>
+							“胡未灭，鬓先秋，泪空流。”这三句步步紧逼，声调短促，说尽平生不得志。放眼西北，神州陆沉，残虏未扫；回首人生，流年暗度，两鬓已苍；沉思往事，雄心虽在，壮志难酬。“未”“先”“空”三字在承接比照中，流露出沉痛的感情，越转越深：人生自古谁不老？但逆胡尚未灭，功业尚未成，岁月已无多，这才迫切感到人“先”老之酸楚。“一事无成霜鬓侵”，一股悲凉渗透心头，人生老大矣。然而，即使天假数年，双鬓再青，也难以实现“攘除奸凶，兴复汉室”的事业。“朱门沉沉按歌舞，厩马肥死弓断弦”，“云外华山千仞，依旧无人问”。所以说，这忧国之泪只是“空”流，一个“空”字既写了内心的失望和痛苦，也写了对君臣尽醉的偏安东南一隅的小朝廷的不满和愤慨。
+						</p>
+						<p>
+							“此生谁料，心在天山，身老沧洲。”最后三句总结一生，反省现实。“天山”代指抗敌前线，“沧洲”指闲居之地，“此生谁料”即“谁料此生”。词人没料到，自己的一生会不断地处在“心”与“身”的矛盾冲突中，他的心神驰于疆场，他的身却僵卧孤村，他看到了“铁马冰河”，但这只是在梦中，他的心灵高高扬起，飞到“天山”，他的身体却沉重地坠落在“沧洲”。“谁料”二字写出了往日的天真与此时的失望，“早岁那知世事艰”，“而今识尽愁滋味”，理想与现实是如此格格不入，无怪乎词人要声声浩叹。“心在天山，身老沧洲”两句作结，先扬后抑，形成一个大转折，词人犹如一心要搏击长空的苍鹰，却被折断羽翮，落到地上，在痛苦中呻吟。
+						</p>
+						<p>
+							陆游这首词，确实饱含着人生的秋意，但由于词人“身老沧洲”的感叹中包含了更多的历史内容，他的阑干老泪中融汇了对祖国炽热的感情，所以，词的情调体现出幽咽而又不失开阔深沉的特色，比一般仅仅抒写个人苦闷的作品显得更有力量，更为动人。
+						</p>
+						<p>
+							测试用文，转载自<a>http://claire470.lofter.com</a>
+						</p>
+					</div>
+				</div>
+				<div id="grade_content_page_comment" style="width:20%; padding:15px; height:90vh; overflow-y:auto;">
+					<h4>月旦春秋</h4></br>
+					<el-input
+					type="textarea"
+					:rows="5"
+					placeholder="请输入评论内容"
+					v-model="textarea">
+					</el-input></br></br>
+					<el-button @click="submit_commit">提交评论</el-button>
+					<div style="height:20px;border-bottom:2px dashed;"></div></br>
+					<div class="comment_card">
+						<div style="text-align:center;">
+							<el-avatar size="medium" src="images/team/jgl.jpg"></el-avatar>
+						</div>
+						<div style="padding:5px;">
+							<p style="font-size:12px;">僵卧孤村不自哀，尚思为国戍轮台。</br>夜阑卧听风吹雨，铁马冰河入梦来。</p>
+							<p style="font-size:10px;">发布时间：2020-12-7-16:34<p>							
+						</div>
+					</div></br>
+					<div class="comment_card">
+						<div style="text-align:center;">
+							<el-avatar size="medium" src="images/team/eth.jpg"></el-avatar>
+						</div>
+						<div style="padding:5px;">
+							<p style="font-size:12px;">梦未必能够圆满，现实中的人生总有未完成</p>
+							<p style="font-size:10px;">发布时间：2020-12-3-12:27<p>
+						</div>
+					</div></br>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/globe.js"></script>
+		<script src="js/grade_content.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/scrollbot.min.js"></script>
+		<script src="js/scrollreveal.min.js"></script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			var fileref = document.createElement('link');
+			fileref.setAttribute("rel","stylesheet");
+			fileref.setAttribute("type","text/css");
+			if(active == "dev") {
+				fileref.setAttribute("href","css/dev_grade_content.css");
+			}
+			else if(active == "pro") {
+				fileref.setAttribute("href","css/pro_grade_content.css");
+			}
+			document.getElementsByTagName("head")[0].appendChild(fileref);
+		</script>
+
+	</body>
+</html>

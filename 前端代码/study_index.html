@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>诗词博物馆-沧海鉴&nbsp;|&nbsp;Study</title>
+		<link rel="shortcut icon" type="image/x-icon" href="images/icons/study_index.ico"/>
+		<link rel="stylesheet" href="css/aos.css"/>
+		<link rel="stylesheet" href="css/pro_study_index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css" />
+		<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css"/>
+	</head>
+	<body>
+		<div id="study_index_page">
+			<div id="study_index_page_header">
+				<div id="nav">
+					<div id="nav_logo" @click="new_nav('main')"></div>
+					<div id="nav_content">
+						<ul>
+							<li @click="new_nav('search')"><i class="fa fa-search"></i>尔雅集</li>
+							<li @click="new_nav('study_index')"><i class="fa fa-graduation-cap"></i>沧海鉴</li>
+							<li @click="new_nav('exam_index')"><i class="fa fa-pencil-square-o"></i>青衿行</li>
+							<li @click="new_nav('grade_index')"><i class="fa fa-wechat"></i>月旦评</li>
+							<li @click="new_nav('college_index')" style="border-right-style:none;">
+								<i class="fa fa-trophy"></i>兰亭会
+							</li>
+							<li id="nav_state" v-show="!is_log_in">
+								<span id="nav_log_in" @click="new_nav('log_in')">登录</span>/
+								<span id="nav_sign_up" @click="new_nav('sign_up')">注册</span>
+							</li>
+							<img id="nav_avatar" @click="new_nav('home')" v-show="is_log_in" class="round_icon">
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<header class="hero">
+				<span class="hero__scroll" aos="fade-up" aos-easing="ease" aos-delay="800">
+					<i class="chevron bottom" style="color:#C08ABA"></i>
+				</span>
+			</header>
+
+			<section class="section section--code">
+				<div class="container">
+					<div class="code code--small code--left code--text" aos="fade-right">
+						<div class="htmleaf-content">
+							<div class="serviceBox" style="height:200px; top:40px;">
+								<div class="service-icon"><i class="fa fa-globe"></i></div>
+								<div class="service-Content">
+									<div class="tagline">昔我往矣, 杨柳依依.<br/>今我来思, 雨雪霏霏.</div>
+									<a id="1" class="btn btn-sm blue">进入学习</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="code code--small code--right" aos="fade-left"
+						style="background-image:url(images/study_index/bg0.png);">
+					</div>
+					<div class="code code--small code--left" aos="fade-up-right" 
+					     style="background-image:url(images/study_index/bg1.png);">
+					</div>
+					<div class="code code--small code--right code--text" aos="fade-up-left">
+						<div class="htmleaf-content">
+							<div class="serviceBox" style="height:200px; top:40px;">
+								<div class="service-icon"><i class="fa fa-globe"></i></div>
+								<div class="service-Content">
+									<div class="tagline">涉江采芙蓉,&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;兰泽多芳草.</div>
+									<a id="2" class="btn btn-sm blue">进入学习</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="code code--small code--left code--text" aos="fade-down-right">
+						<div class="htmleaf-content">
+							<div class="serviceBox" style="height:200px; top:40px;">
+								<div class="service-icon"><i class="fa fa-globe"></i></div>
+								<div class="service-Content">
+									<div class="tagline">采菊东篱下,&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;悠然见南山.</div>
+									<a id="3" class="btn btn-sm blue">进入学习</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="code code--small code--right" aos="fade-down-left"
+						style="background-image:url(images/study_index/bg2.png);">
+					</div>
+					<div class="code code--small code--left" aos="fade-right"
+						style="background-image:url(images/study_index/bg3.png);">
+					</div>
+					<div class="code code--small code--right code--text" aos="fade-left">
+						<div class="htmleaf-content">
+							<div class="serviceBox" style="height:200px; top:40px;">
+								<div class="service-icon"><i class="fa fa-globe"></i></div>
+								<div class="service-Content">
+									<div class="tagline" style="font-size:40px;">此时相望不相闻,<br/>愿随月华流照君.</div>
+									<a id="4" class="btn btn-sm blue">进入学习</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="code code--small code--left code--text" aos="fade-up-right">
+						<div class="htmleaf-content">
+							<div class="serviceBox" style="height:200px; top:40px;">
+								<div class="service-icon"><i class="fa fa-globe"></i></div>
+								<div class="service-Content">
+									<div class="tagline">大江东去、浪淘尽,<br/>千古风流人物.</div>
+									<a id="5" class="btn btn-sm blue">进入学习</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="code code--small code--right" aos="fade-up-left"
+						style="background-image:url(images/study_index/bg4.png);">
+					</div>
+					<div class="code code--small code--left" aos="fade-down-right"
+						style="background-image:url(images/study_index/bg5.png);">
+					</div>
+					<div class="code code--small code--right code--text" aos="fade-down-left">	
+						<div class="htmleaf-content">
+							<div class="serviceBox" style="height:200px; top:40px;">
+								<div class="service-icon"><i class="fa fa-globe"></i></div>
+								<div class="service-Content">
+									<div class="tagline">素衣莫起风尘叹,&nbsp;&nbsp;&nbsp;<br/>&nbsp;&nbsp;&nbsp;犹及清明可到家.</div>
+									<a id="6" class="btn btn-sm blue">进入学习</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div id="bottom">
+				<div style="width:200px"></div>
+				<div class="bottom_item1">
+					<div style="height:60px; line-height:60px;">服务</div>
+					<a href="#" class="links">首页</a>
+					<a href="#" class="links">反馈</a>
+				</div>
+				<div class="bottom_item1">
+					<div style="height:60px; line-height:60px;">开源</div>
+					<a href="#" class="links">Github</a>
+					<a href="#" class="links">eJudge</a>
+				</div>
+				<div class="bottom_item2">
+					<div style="height:60px; line-height:60px;">关于我们</div>
+					<div id="bottom_item2_lines">
+						<b style="color:#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;前端开发：</b>
+						<a href="#" class="links" @click="about_us('eth')">@10175101159</a>
+						<b style="color:#FFFFFF">,</b>
+						<a href="#" class="links" @click="about_us('rwn')">@10185102105</a>
+					</div>
+					<div id="bottom_item2_lines">
+						<b style="color:#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;后端开发：</b>
+						<a href="#" class="links" @click="about_us('wvn')">@10185102113</a>
+						<b style="color:#FFFFFF">,</b>
+						<a href="#" class="links" @click="about_us('wvn')">@10185102113</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/globe.js"></script>
+		<script src="js/study_index.js"></script>
+		<script src="js/aos.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/highlight.min.js"></script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			AOS.init({
+				easing: 'ease-out-back',
+				duration: 1000
+			});
+			hljs.initHighlightingOnLoad();
+
+			$('.hero__scroll').on('click', function(e) {
+				$('html, body').animate({
+					scrollTop: $(window).height()
+				}, 1200);
+			});
+		</script>
+	</body>
+</html>
