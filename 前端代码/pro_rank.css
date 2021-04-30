@@ -1,0 +1,90 @@
+
+/*
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/11/29
+Version : 0.1
+All Rights Reserved.
+*/
+
+@charset "utf-8";
+
+*, *:before, *:after { box-sizing:border-box; margin:0; padding:0; user-select:none; }
+
+#nav { height:50px; width:100%; display:flex; flex-direction:row; }
+#nav_logo { width:160px; background-image:url(https://poetry0.oss-accelerate.aliyuncs.com/images/logo.png); }
+#nav_content { display:flex; flex-direction:row; user-select:none; }
+#nav_content ul { display:flex; flex-direction:row; margin:0; padding:0; font-size:17px; }
+#nav_content li { padding:0; list-style:none; line-height:35px; border-right-style:solid; border-right-color:#DEDEDE; position:relative; cursor:pointer; width:100px; text-align:center; font-family:"STLiti"; margin-top:10px; margin-bottom:10px; font-size:17px; letter-spacing:2; }
+#nav_content ul li::before, #nav_content ul li::after { content:""; position:absolute; top:36px; left:50%; height:2px; width:0; background-color:#BD2224; transition:all .1s linear; }
+#nav_content ul li:hover { color:#BD2224; border-right-color:#DEDEDE; }
+#nav_content ul li:hover::before { width:60%; left:0; }
+#nav_content ul li:hover::after { width:50%; }
+#nav #nav_state { margin-left:470px; border-right-style:none; }
+#nav #nav_state:hover { color:#000000; }
+#nav #nav_state:hover::before { width:0; }
+#nav #nav_state:hover::after { width:0; }
+#nav #nav_log_in:hover, #nav #nav_sign_up:hover { color:#BD2224; }
+#nav #nav_avatar { height:40px; width:40px; display:flex; border-radius:50%; align-items:center; justify-content:center; overflow:hidden; margin-top:6px; margin-left:540px; }
+
+
+.container { width:100%; position:relative; text-align:center; }
+.clr { clear:both; }
+.container > header { padding:20px 30px 10px 30px; margin:0px 20px 10px 20px; position:relative; display:block; text-shadow:1px 1px 1px rgba(0,0,0,0.2); text-align:center; }
+.container > header h1 { font-size:35px; line-height:35px; position:relative; font-weight:400; text-shadow:1px 1px 1px rgba(0,0,0,0.3); padding:0px 0px 5px 0px; }
+.container > header h1 span { text-shadow:0px 1px 1px rgba(255,255,255,0.8); }
+.container > header h2 { font-size:16px; text-shadow:0px 1px 1px rgba(255,255,255,0.8); }
+
+@media screen and (max-width:767px) { .container > header { text-align:center; } p.codrops-demos { position:relative; top:auto; left:auto; } }
+
+#da-link1 { width:200px; border-style:solid; }
+.demo { padding: 2em 0; }
+.counter { padding:20px 0; text-align:center; position:relative; }
+.counter .counter-content { width:180px; height:180px; border-radius:50%; padding:30px 0; margin:0 auto 30px; z-index:1; position:relative; transition:all 0.3s ease 0s; }
+.counter .counter-content:before { content:""; width:122%; height:122%; border-radius:50%; border:20px solid #D0FDD9; border-bottom:20px solid transparent; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+.counter .counter-content:after { content:""; border-top:16px solid #D0FDD9; border-left:16px solid transparent; border-right:16px solid transparent; position:absolute; bottom:-14px; left:50%; transform:translateX(-50%); }
+.counter .counter-icon { display:block; font-size:50px; color:#D0FDD9; line-height:50px; }
+.counter .counter-value { font-size:50px; font-weight:700; line-height:70px; }
+.counter .title { display:inline-block; padding:5px 25px; background:#D0FDD9; border-radius:10px; font-size:20px; font-weight:600; text-transform:capitalize; margin:0; }
+.counter .two .counter-content:before { border-color: #C0F7E4; border-bottom-color:transparent; }
+.counter .two .counter-content:after { border-top-color:#C0F7E4; }
+.counter .two .counter-icon { color:#C0F7E4; }
+.counter .two .title { background:#C0F7E4; }
+.counter .three .counter-content:before { border-color:#66CDAA; border-bottom-color:transparent; }
+.counter .three .counter-content:after { border-top-color:#66CDAA; }
+.counter .three .counter-icon { color:#66CDAA; }
+.counter .three .title { background:#66CDAA; }
+
+#bottom { display:flex; flex-direction:row; text-align:center; color:#000000; font-family:"NSimSun"; font-weight:bolder; margin:auto; height:150px; width:100%; }
+#bottom .bottom_item1 { display:flex; flex-direction:column; height: 130px; width:200px; border-right-style:solid; border-color:#DBDEE0; }
+#bottom .bottom_item2 { display:flex; flex-direction:column; width:400px; }
+#bottom_item2_lines { display:flex; flex-direction:row; }
+#bottom .bottom_item1 .links { text-decoration:none; color:#A9A9A9; }
+#bottom .bottom_item1 .links:hover { color:#000000; }
+#bottom .bottom_item2 #bottom_item2_lines .links { text-decoration:none; color:#A9A9A9; }
+#bottom .bottom_item2 #bottom_item2_lines .links:hover { color:#000000; }
+
+.demo2{	padding:2em; }
+.serviceBox{ border:1px solid #EDEDED; padding:30px 30px 30px 90px; position:relative; transition:all 0.5s ease 0s; }
+.serviceBox:hover{ border-color:#41D7F7; }
+.serviceBox:before,.serviceBox:after{ content: ""; display:block; width:50px; height:5px; background:#41D7F7; position:absolute; left:0; opacity:0; transition:all 0.5s ease 0s; }
+.serviceBox:before{ top:-3px; }
+.serviceBox:after{ bottom:-3px; }
+.serviceBox:hover:before,.serviceBox:hover:after{ left:40px; opacity:1; }
+.serviceBox .service-icon{ display:inline-block; position:absolute; top:33%; left:23px; font-size:45px; color:#41D7F7; opacity:0.3; transition:all 0.5s ease-in 0s; }
+.serviceBox:hover .service-icon{ opacity:1; }
+.serviceBox .title{ font-size:18px; font-weight:700; color:#41D7F7; margin-bottom:15px; }
+.serviceBox .description{ font-size:13px; color:#666666; line-height:20px; }
+@media only screen and (max-width:990px;){.serviceBox{ margin-bottom:30px; } }
+
+.btn{ border:none; border-radius:0; text-transform:uppercase; padding-top:0; padding-bottom:0; position:relative; transition:all 0.3s ease 0s; }
+.btn:before{ content: ""; display:block; width:100%; position:absolute; top:0; left:0;border-top: 2px solid transparent;transition: all 0.3s ease 0s;}
+.btn:hover:before{ transform: translateY(42px);}
+.btn:after{ content: "\f105"; font-family:fontawesome; display:inline-block; width:44px; height:44px; border:2px solid transparent; font-size: 24px; line-height: 40px; position: relative; top: 0; right: -16px; transition: all 0.43s ease 0s; }
+.btn:hover:after{transform: rotateX(180deg); }
+.btn.btn-sm:hover:before{transform:translateY(32px); }
+.btn.btn-sm:after{width: 34px; height:34px; line-height:30px; font-size:20px; right:-10px; }
+.btn.btn-xs:hover:before{ transform:translateY(22px); }
+.btn.btn-xs:after{ width:24px; height:24px; line-height:20px; font-size:16px; right:-5px; }
+.btn.blue{ color:#41D7F7; }
+.btn.blue:before, .btn.blue:after{ border-color: #41D7F7; }
+@media only  screen and (max-width: 767px){ .btn{ margin-bottom: 20px; } }

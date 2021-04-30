@@ -1,0 +1,89 @@
+
+
+body, html { padding:0; margin:0; user-select:none; }
+a { text-decoration:none; }
+li { list-style:none; } 
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+body{
+	font-weight: 500;
+	font-size: 1.05em;
+}
+a{color: #2fa0ec;text-decoration: none;outline: none;}
+
+
+
+#gallery-wrapper {
+position: relative;
+max-width: 75%;
+width: 75%;
+margin:50px auto;
+}
+img.thumb {
+width: 100%;
+max-width: 100%;
+height: auto;
+}
+.white-panel {
+position: absolute;
+background: white;
+border-radius: 5px;
+box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+padding: 10px;
+}
+.white-panel h1 {
+font-size: 1em;
+}
+.white-panel h1 a {
+color: #A92733;
+}
+.white-panel:hover {
+box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+margin-top: -5px;
+-webkit-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+}
+
+#nav { position:absolute;  top: 0;left: 0; height:50px; width:100%; display:flex; flex-direction:row; }
+#nav_logo { width:160px; background-image:url(../images/logo.png); }
+#nav_content { display:flex; flex-direction:row; user-select:none;}
+#nav_content ul { display:flex; flex-direction:row; margin:0; padding:0; font-size:17px; }
+#nav_content li { padding:0; list-style:none; line-height:35px; border-right-style:solid; border-right-color:#989898; position:relative; cursor:pointer; width:100px; text-align:center; font-family:"STLiti"; margin-top:10px; margin-bottom:10px; font-size:17px; letter-spacing:2; }
+#nav_content ul li::before, #nav_content ul li::after { content:""; position:absolute; top:36px; left:50%; height:2px; width:0; background-color:#BD2224; transition:all .1s linear; }
+#nav_content ul li:hover { color:#BD2224; border-right-color: #989898; }
+#nav_content ul li:hover::before { width:60%; left:0; }
+#nav_content ul li:hover::after { width:50%; }
+#nav #nav_state { margin-left:470px; border-right-style:none; }
+#nav #nav_state:hover { color:#000000; }
+#nav #nav_state:hover::before { width:0; }
+#nav #nav_state:hover::after { width:0; }
+#nav #nav_log_in:hover, #nav #nav_sign_up:hover { color:#BD2224; }
+#nav #nav_avatar { height:40px; width:40px; display:flex; border-radius:50%; align-items:center; justify-content:center; overflow:hidden; margin-top:6px; margin-left:540px; }
+
+#question_title { height:80px; line-height:80px; padding-left:150px; text-align:left; }
+
+#side_item1 { height:50px; line-height:50px; font-size:16px; font-weight:bolder; font-family:STFangsong; padding-left:20px; text-align:left; }
+#side_item1:hover { cursor:pointer; background-color:#F0F0F0; border-left:solid; border-color:#BD2224; }
+#side_item2 { height:30px; line-height:30px; font-size:13px; font-weight:bolder; font-family:STFangsong; padding-left:20px; text-align:left; }
+#side_item2:hover { cursor:pointer; background-color:#F0F0F0; border-left:solid; }
+
+.transition-box { margin-bottom:10px; width: 200px; height: 100px; border-radius:4px; background-color: #409EFF; text-align:center; padding:40px 20px; box-sizing:border-box; margin-right:20px; }

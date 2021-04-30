@@ -1,0 +1,55 @@
+
+/*
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/11/24
+Version : 0.1
+All Rights Reserved.
+*/
+
+@charset "utf-8";
+
+* { margin:0; padding:0; user-select:none; }
+
+#nav { height:50px; width:100%; display:flex; flex-direction:row; }
+#nav_logo { width:160px; background-image:url(../images/logo.png); }
+#nav_content { display:flex; flex-direction:row; user-select:none;}
+#nav_content ul { display:flex; flex-direction:row; margin:0; padding:0; font-size:17px; }
+#nav_content li { padding:0; list-style:none; line-height:35px; border-right-style:solid; border-right-color:#DEDEDE; position:relative; cursor:pointer; width:100px; text-align:center; font-family:"STLiti"; margin-top:10px; margin-bottom:10px; font-size:17px; letter-spacing:2; }
+#nav_content ul li::before, #nav_content ul li::after { content:""; position:absolute; top:36px; left:50%; height:2px; width:0; background-color:#BD2224; transition:all .1s linear; }
+#nav_content ul li:hover { color:#BD2224; border-right-color: #DEDEDE; }
+#nav_content ul li:hover::before { width:60%; left:0; }
+#nav_content ul li:hover::after { width:50%; }
+#nav #nav_state { width:160px; margin-left:400px; border-right-style:none; }
+#nav #nav_state:hover { color:#000000; }
+#nav #nav_state:hover::before { width:0; }
+#nav #nav_state:hover::after { width:0; }
+#nav #nav_log_in:hover { color:#BD2224; }
+
+.container { position:absolute; z-index:9999; top:0; left:100; right:0; bottom:0; width:300px; height:50px; }
+.container .search { position:absolute; margin:auto; top:0; right:0; bottom:0; left:0; width:45px; height:45px; background:#BD2224; border-radius:50%; transition:all 1s; z-index:4; box-shadow:0 0 10px 0 #B7B7B7; }
+.container .search:hover { cursor:pointer; }
+.container .search::before { content:""; position:absolute; margin:auto; top:22px; right:0; bottom:0; left:12px; width:10px; height:2px; background:white; transform:rotate(45deg); transition:all .5s; }
+.container .search::after { content:""; position:absolute; margin:auto; top:-5px; right:0; bottom:0; left:-5px; width:25px; height:25px; border-radius:50%; border:2px solid white; transition:all .5s; }
+.container input { position:absolute; margin:auto; top:0; right:0; bottom:0; left:0; width:45px; height:45px; outline:none; border:none; background:#BD2224; color:white; padding:0 80px 0 20px; border-radius:30px; box-shadow:0 0 5px 0 #FF6A6A,0 0px 5px 0 #B7B7B7; transition:all 1s; opacity:0; z-index:5; letter-spacing:0.1em; }
+.container input:hover { cursor:pointer; }
+.container input:focus { width:100px; opacity:1; cursor:text; }
+.container input:focus ~ .search { right:-100px; background:#151515; z-index:6; }
+.container input:focus ~ .search::before { top:0; left:0; width:25px; }
+.container input:focus ~ .search::after { top:0; left:0; width:25px; height:2px; border:none; background:#FFFFFF; border-radius:0%; transform:rotate(-45deg); }
+.container input::placeholder { color:#FFFFFF; opacity:0.5; font-weight:bolder; }
+
+#mainbody { height:750px; width:100%; background-color:#6A0000; }
+#registration { height:600px; width:100%; background-image:url(../images/bg_sign_up.png); background-size:contain; background-repeat:no-repeat; text-align:center; }
+#registration .register_input { width:15%; vertical-align:middle; }
+
+#verification_code { width:15%; display:flex; flex-direction:row; margin:auto; }
+#verification_code_tip { text-align:center; font-family:FangSong; font-size:13px; }
+
+#bottom { display:flex; flex-direction:row; text-align:center; color:#FFFFFF; font-family:"NSimSun"; font-weight:bolder; }
+#bottom .bottom_item1 { display:flex; flex-direction:column; height: 130px; width:200px; border-right-style:solid; border-color:#DBDEE0; }
+#bottom .bottom_item2 { display:flex; flex-direction:column; width:400px; }
+#bottom_item2_lines { display:flex; flex-direction:row; }
+#bottom .bottom_item1 .links { text-decoration:none; color:#A9A9A9; }
+#bottom .bottom_item1 .links:hover { color:#FFFFFF; }
+#bottom .bottom_item2 #bottom_item2_lines .links { text-decoration:none; color:#A9A9A9; }
+#bottom .bottom_item2 #bottom_item2_lines .links:hover { color:#FFFFFF; }

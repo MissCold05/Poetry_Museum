@@ -1,0 +1,72 @@
+
+/*
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/11/28
+Version : 0.1
+All Rights Reserved.
+*/
+
+@charset "utf-8";
+
+* { margin:0; padding:0; user-select:none; }
+
+#nav { position:absolute; top:0; left:0; height:50px; width:100%; display:flex; flex-direction:row; z-index:8189; }
+#nav_logo { width:160px; background-image:url(https://poetry0.oss-accelerate.aliyuncs.com/images/logo.png); }
+#nav_content { display:flex; flex-direction:row; user-select:none;}
+#nav_content ul { display:flex; flex-direction:row; margin:0; padding:0; font-size:17px; }
+#nav_content li { padding:0; list-style:none; line-height:35px; border-right-style:solid; border-right-color:#DEDEDE; position:relative; cursor:pointer; width:100px; text-align:center; font-family:"STLiti"; margin-top:10px; margin-bottom:10px; font-size:17px; letter-spacing:2; }
+#nav_content ul li::before, #nav_content ul li::after { content:""; position:absolute; top:36px; left:50%; height:2px; width:0; background-color:#BD2224; transition:all .1s linear; }
+#nav_content ul li:hover { color:#BD2224; border-right-color:#DEDEDE; }
+#nav_content ul li:hover::before { width:60%; left:0; }
+#nav_content ul li:hover::after { width:50%; }
+
+#gradient-rotate { position:absolute; top:0; right:0; bottom:0; left:0; width:100vw; height:100vh; }
+#trianglify-overlay { position:absolute; top:0; right:0; bottom:0; left:0; width:100vw; height:100vh; }
+#color-stop-1 { -webkit-animation:change-color-1 12s ease-in-out infinite alternate; animation:change-color-1 12s ease-in-out infinite alternate }
+#color-stop-2 { -webkit-animation:change-color-2 12s ease-in-out infinite alternate; animation:change-color-2 12s ease-in-out infinite alternate; }
+#color-stop-3 { -webkit-animation:change-color-3 12s ease-in-out infinite alternate; animation:change-color-3 12s ease-in-out infinite alternate; }
+@keyframes change-color-1 { 0% { stop-color:#22C8F6; } 25% { stop-color:#FFFF00; } 50% { stop-color:#00FFCB; } 75% { stop-color:#70FF00; } }
+@keyframes change-color-2 { 0% { stop-color:#20C498; } 25% { stop-color:#FF00AD; } 50% { stop-color:#D480FF; } 75% { stop-color:#FF9200; } }
+@keyframes change-color-3 { 0% { stop-color:#189932; } 25% { stop-color:#C300CB; } 50% { stop-color:#5600D4; } 75% { stop-color:#FF46DC; } }
+
+#mainbody{ display:flex; flex-direction:row; width:100%; position:absolute; top:50px;left:0; z-index:8189; }
+
+#avatar { height:50px; width:50px; display:flex; border-radius:50%; align-items:center; justify-content:center; overflow:hidden; margin-top:25px; margin-left:10px; }
+#personal_information{ height:100px; display:flex; flex-direction:row; line-height:100px; font-family:"NSimSun"; font-size:18px; font-weight:bolder; }
+#sidebar{ width: 160px; height:100vh-50px; background-color:rgb(255,255,255,0.5); }
+#sidebar ul{ list-style:none; }
+#sidebar li{ text-align:center; height:40px; line-height:40px; color:rgba(0,0,0,0.5); margin:auto; font-size:14px; font-weight:bolder; font-family:NSimSun; }
+#sidebar li:hover{ background-color:rgba(255,255,255,0.6); color:#000000; cursor:pointer; }
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+#container0 { width:800px; height:380px; overflow:auto; color:#666666; background-color:rgba(255,255,255,0.5); padding:20px; margin:40px auto; border-radius:5px; }
+#container0 p { margin-bottom:10px; }
+#container0 .hide { display:none; }
+#container0 dt { font-family:FangSong; font-weight:bolder; font-size:18px; color:#BD2224; margin-bottom:20px; margin-left:26px; cursor:pointer; }
+#container0 dt:before { content:""; border-color:transparent #CCCCCC; border-style:solid; border-width:5px 0 5px 8px; display:block; height:0; width:0; left:-16px; top:17px; position:relative; }
+#container0 dd { font-family:NsimSun; font-size:14px; padding:20px; background:#FDFCFA; border-radius:5px; border:1px solid #F2EEE6; margin:20px 0 30px; position:relative; }
+#container0 dd:after, dd:before { bottom:100%; left:6%; border:solid transparent; content:""; height:0; width:0; position:absolute; pointer-events:none; }
+#container0 dd:after { border-color:rgba(136,183,213,0); border-color:transparent; border-bottom-color:#FDFCFA; border-width:15px; margin-left:-15px; }
+#container0 dd:before { border-color:rgba(194,225,245,0); border-color:transparent; border-bottom-color:#F2EEE6; border-width:17px; margin-left:-17px; }
+
+#container4 { position:absolute; top:60px; left:240px; z-index:8189; }
+#container5 { position:absolute; top:60px; left:240px; z-index:8189; }
+
+#container6 { position:absolute; top:60px; left:240px; z-index:8189; }
+#container6 .row { width:1000px; }
+#container6 .our-team { padding:30px 0 40px; text-align:center; overflow:hidden; position:relative; width:200px; background-color:rgba(255,255,255,0.5); }
+#container6 .our-team .pic { display:inline-block; width:130px; height:130px; margin-bottom:50px; z-index:1; position:relative; }
+#container6 .our-team .pic:before { content:""; width:150px; height:0; border-radius:50%; background:#FF6347; position:absolute; bottom:135%; right:0; left:0; opacity:0.2; transform:scale(3); transition:all 0.3s linear 0s; }
+#container6 .our-team:hover .pic:before { height:100%; }
+#container6 .our-team .pic:after { content:""; width:100%; height:100%; border-radius:50%; background:#BD2224; position:absolute; top:0; left:0; z-index:-1; }
+#container6 .our-team .pic img { width:100%; height:auto; border-radius:50%; transform:scale(1); transition:all 0.9s ease 0s; }
+#container6 .our-team:hover .pic img { box-shadow:0 0 0 14px #F7F5EC; transform:scale(0.7); }
+#container6 .our-team .team-content { margin-bottom:30px; }
+#container6 .our-team .title { font-size:22px; font-weight:700; color:#4E5052; letter-spacing:1px; text-transform:capitalize; margin-bottom:5px; }
+#container6 .our-team .post { display:block; font-size:15px; color:#4E5052; text-transform:capitalize; }
+#container6 .our-team .social { width:100%; padding:0; margin:0; background:#BD2224; position:absolute; bottom:-100px; left:0; transition:all 0.5s ease 0s; }
+#container6 .our-team:hover .social { bottom:0; }
+#container6 .our-team .social li { display:inline-block; }
+#container6 .our-team .social li a { display:block; padding:10px; font-size:17px; color:#FFFFFF; transition:all 0.3s ease 0s; }
+#container6 .our-team .social li a:hover { color:#EB1768; background:#F7F5EC; }
+@media only screen and (max-width:990px) { .our-team { margin-bottom:30px; } }

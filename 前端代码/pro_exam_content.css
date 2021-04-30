@@ -1,0 +1,33 @@
+
+/*
+Author	: @Rowena_Zhang @Ethereality
+Date	: 2020/12/06
+Version : 0.1
+All Rights Reserved.
+*/
+
+@charset "utf-8";
+
+*, *:before, *:after { box-sizing:border-box; margin:0; padding:0; user-select:none; }
+body { background-image:url(https://poetry0.oss-accelerate.aliyuncs.com/images/exam_content/bg.png); background-repeat:no-repeat; width:100%;  background-size:cover; background-position:50% 0; height:100%; text-align:center; }
+
+#nav { height:50px; width:100%; display:flex; flex-direction:row; }
+#nav_logo { width:160px; background-image:url(https://poetry0.oss-accelerate.aliyuncs.com/images/logo.png); }
+#nav_content { display:flex; flex-direction:row; user-select:none; }
+#nav_content ul { display:flex; flex-direction:row; margin:0; padding:0; font-size:17px; }
+#nav_content li { padding:0; list-style:none; line-height:35px; border-right-style:solid; border-right-color:#DEDEDE; position:relative; cursor:pointer; width:100px; text-align:center; font-family:"STLiti"; margin-top:10px; margin-bottom:10px; font-size:17px; letter-spacing:2; }
+#nav_content ul li::before, #nav_content ul li::after { content:""; position:absolute; top:36px; left:50%; height:2px; width:0; background-color:#BD2224; transition:all .1s linear; }
+#nav_content ul li:hover { color:#BD2224; border-right-color:#DEDEDE; }
+#nav_content ul li:hover::before { width:60%; left:0; }
+#nav_content ul li:hover::after { width:50%; }
+#nav #nav_state { margin-left:470px; border-right-style:none; }
+#nav #nav_state:hover { color:#000000; }
+#nav #nav_state:hover::before { width:0; }
+#nav #nav_state:hover::after { width:0; }
+#nav #nav_log_in:hover, #nav #nav_sign_up:hover { color:#BD2224; }
+#nav #nav_avatar { height:40px; width:40px; display:flex; border-radius:50%; align-items:center; justify-content:center; overflow:hidden; margin-top:6px; margin-left:540px; }
+
+.block { height:400px; width:85%; position:absolute; top:100px; left:100px; }
+.block .question { width:80%; text-align:left; margin-left:10%; }
+.block .question .statement { font-size:18px; font-weight:bolder; }
+.block .question .option { display:block; text-align:left; }

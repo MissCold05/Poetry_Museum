@@ -1,0 +1,388 @@
+
+/*
+Author  : @Rowena_Zhang @Ethereality
+Date  : 2020/11/12
+Version : 0.1
+All Rights Reserved.
+*/
+
+@charset "utf-8";
+*, *:before, *:after { box-sizing:border-box; margin:0; padding:0; user-select:none; }
+
+#nav { height:50px; width:100%; display:flex; flex-direction:row; }
+#nav_logo { width:160px; background-image:url(https://poetry0.oss-accelerate.aliyuncs.com/images/logo.png); }
+#nav_content { display:flex; flex-direction:row; user-select:none; }
+#nav_content ul { display:flex; flex-direction:row; margin:0; padding:0; font-size:17px; }
+#nav_content li { padding:0; list-style:none; line-height:35px; border-right-style:solid; border-right-color:#DEDEDE; position:relative; cursor:pointer; width:100px; text-align:center; font-family:"STLiti"; margin-top:10px; margin-bottom:10px; font-size:17px; letter-spacing:2; }
+#nav_content ul li::before, #nav_content ul li::after { content:""; position:absolute; top:36px; left:50%; height:2px; width:0; background-color:#BD2224; transition:all .1s linear; }
+#nav_content ul li:hover { color:#BD2224; border-right-color:#DEDEDE; }
+#nav_content ul li:hover::before { width:60%; left:0; }
+#nav_content ul li:hover::after { width:50%; }
+#nav #nav_state { margin-left:470px; border-right-style:none; }
+#nav #nav_state:hover { color:#000000; }
+#nav #nav_state:hover::before { width:0; }
+#nav #nav_state:hover::after { width:0; }
+#nav #nav_log_in:hover, #nav #nav_sign_up:hover { color:#BD2224; }
+#nav #nav_avatar { height:40px; width:40px; display:flex; border-radius:50%; align-items:center; justify-content:center; overflow:hidden; margin-top:6px; margin-left:540px; }
+
+.cd-btn {
+  width: 0;
+  display: inline-block;
+  background-color: #a5c4bc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: box-shadow 0.3s;
+  -moz-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+}
+.no-touch .cd-btn:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.cd-main-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  display: table;
+  background-image:url(https://poetry0.oss-accelerate.aliyuncs.com/images/study_content/bg.png);
+}
+.cd-main-content .center {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* -------------------------------- 
+
+Modal window 
+
+-------------------------------- */
+.cd-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  opacity: 0;
+  visibility: hidden;
+  background-color:#000000;
+  background-image:url(https://poetry0.oss-accelerate.aliyuncs.com/images/study_content/bg2.png);
+  -webkit-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  -moz-transition: opacity 0.3s 0s, visibility 0s 0.3s;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+.cd-modal .modal-content {
+  height: 100%;
+  overflow-y: auto;
+  color: #e4dcca;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.cd-modal h1 {
+  text-align: center;
+}
+.cd-modal h1::after {
+  content: '';
+  display: block;
+  width: 130px;
+  height: 18px;
+  background-color:#FFFFFF;
+  margin: .2em auto 0;
+}
+.cd-modal p {
+  line-height: 1.6;
+  margin: 2em auto;
+  max-width: 800px;
+}
+
+.no-touch .cd-modal .modal-close:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.cd-modal.visible {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.7s, visibility 0s;
+  -moz-transition: opacity 0.7s, visibility 0s;
+  transition: opacity 0.7s, visibility 0s;
+}
+.cd-modal.visible .modal-content {
+-webkit-overflow-scrolling: touch;
+}
+.cd-modal.visible .modal-close {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: -webkit-transform 0.3s 0s, visibility 0s 0s, opacity 0.3s 0s;
+  -moz-transition: -moz-transform 0.3s 0s, visibility 0s 0s, opacity 0.3s 0s;
+  transition: transform 0.3s 0s, visibility 0s 0s, opacity 0.3s 0s;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+@media only screen and (min-width: 1100px) {
+  .cd-modal .modal-content {
+    padding: 6em 5%;
+  }
+  .cd-modal .modal-close {
+    height: 60px;
+    width: 60px;
+  }
+  .cd-modal p {
+    font-size: 2rem;
+  }
+}
+
+/* -------------------------------- 
+
+Transition Layer 
+
+-------------------------------- */
+.cd-transition-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+.cd-transition-layer .bg-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateY(-50%) translateX(-2%);
+  -moz-transform: translateY(-50%) translateX(-2%);
+  -ms-transform: translateY(-50%) translateX(-2%);
+  -o-transform: translateY(-50%) translateX(-2%);
+  transform: translateY(-50%) translateX(-2%);
+  height: 100%;
+  width: 2500%;
+  background: url(https://poetry0.oss-accelerate.aliyuncs.com/images/study_content/ink.png) no-repeat 0 0;
+  background-size: 100% 100%;
+}
+.cd-transition-layer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.cd-transition-layer.opening .bg-layer {
+  -webkit-animation: cd-sequence 0.8s steps(24);
+  -moz-animation: cd-sequence 0.8s steps(24);
+  animation: cd-sequence 0.8s steps(24);
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.cd-transition-layer.closing .bg-layer {
+  -webkit-animation: cd-sequence-reverse 0.8s steps(24);
+  -moz-animation: cd-sequence-reverse 0.8s steps(24);
+  animation: cd-sequence-reverse 0.8s steps(24);
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+.no-cssanimations .cd-transition-layer {
+  display: none;
+}
+
+@-webkit-keyframes cd-sequence {
+  0% {
+    /* translateX(-2%) is used to horizontally center the first frame inside the viewport */
+    -webkit-transform: translateY(-50%) translateX(-2%);
+  }
+  100% {
+    /* translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+    -webkit-transform: translateY(-50%) translateX(-98%);
+  }
+}
+@-moz-keyframes cd-sequence {
+  0% {
+    /* translateX(-2%) is used to horizontally center the first frame inside the viewport */
+    -moz-transform: translateY(-50%) translateX(-2%);
+  }
+  100% {
+    /* translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+    -moz-transform: translateY(-50%) translateX(-98%);
+  }
+}
+@keyframes cd-sequence {
+  0% {
+    /* translateX(-2%) is used to horizontally center the first frame inside the viewport */
+    -webkit-transform: translateY(-50%) translateX(-2%);
+    -moz-transform: translateY(-50%) translateX(-2%);
+    -ms-transform: translateY(-50%) translateX(-2%);
+    -o-transform: translateY(-50%) translateX(-2%);
+    transform: translateY(-50%) translateX(-2%);
+  }
+  100% {
+    /* translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+    -webkit-transform: translateY(-50%) translateX(-98%);
+    -moz-transform: translateY(-50%) translateX(-98%);
+    -ms-transform: translateY(-50%) translateX(-98%);
+    -o-transform: translateY(-50%) translateX(-98%);
+    transform: translateY(-50%) translateX(-98%);
+  }
+}
+@-webkit-keyframes cd-sequence-reverse {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-98%);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-2%);
+  }
+}
+@-moz-keyframes cd-sequence-reverse {
+  0% {
+    -moz-transform: translateY(-50%) translateX(-98%);
+  }
+  100% {
+    -moz-transform: translateY(-50%) translateX(-2%);
+  }
+}
+@keyframes cd-sequence-reverse {
+  0% {
+    -webkit-transform: translateY(-50%) translateX(-98%);
+    -moz-transform: translateY(-50%) translateX(-98%);
+    -ms-transform: translateY(-50%) translateX(-98%);
+    -o-transform: translateY(-50%) translateX(-98%);
+    transform: translateY(-50%) translateX(-98%);
+  }
+  100% {
+    -webkit-transform: translateY(-50%) translateX(-2%);
+    -moz-transform: translateY(-50%) translateX(-2%);
+    -ms-transform: translateY(-50%) translateX(-2%);
+    -o-transform: translateY(-50%) translateX(-2%);
+    transform: translateY(-50%) translateX(-2%);
+  }
+}
+
+.vertical-tab{
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-tab .nav-tabs{
+    display: table-cell;
+    border: none;
+    height: 600px;
+    width:260px;
+    border-right: 2px solid #e7e7e7;
+}
+.vertical-tab .nav-tabs li{
+   float: none;
+   height:40px;
+   line-height:40px;
+   text-align: center;
+}
+.vertical-tab .nav-tabs li a{
+    color: #444;
+    text-align: center;
+    letter-spacing: 1px;
+    text-decoration: none;
+
+    margin: 0 0 1px 0;
+    transition: all 0.3s ease 0s;
+}
+.vertical-tab .nav-tabs li a:hover,
+.vertical-tab .nav-tabs li.active a,
+.vertical-tab .nav-tabs li.active a:hover{
+    color: #BD2224;
+    background-color:rgba(255,255,255,0.8);
+    
+    border: none;
+}
+.vertical-tab .nav-tabs li a:before,
+.vertical-tab .nav-tabs li a:after{
+    opacity: 0; 
+    background-color:rgba(255,255,255,0.8);
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: -4px;
+    z-index: 1;
+    transition: all 0.3s ease 0.1s;
+}
+.vertical-tab .nav-tabs li a:after{
+    content: "";
+    background: #BD2224;
+    width: 3px;
+    height: 100%;
+    transform: translateY(0);
+    top: 0;
+    right: 8px;
+    transition: all 0.3s ease 0s;
+}
+.vertical-tab .nav-tabs li a:hover:before,.vertical-tab .nav-tabs li.active a:before{ opacity:1; right:-17px; }
+.vertical-tab .nav-tabs li a:hover:after,.vertical-tab .nav-tabs li.active a:after{ opacity:1; right:-3px; }
+
+    .clearfix:after, .container:after, .tab-nav:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    .absolute_position {
+      position:absolute; top:15vh;left:25%;height:80vh;width:70%;
+    }
+    .tab-group {
+      position: absolute;
+      border: 1px solid #EEEEEE;
+      width:100%;
+      height:80vh;
+      background-color:rgba(255,255,255,0.8);
+      border-radius: 0 10px 10px 10px;
+    }
+    .tab-group section {
+      opacity: 0;
+      height: 0;
+      padding: 0 1em;
+      overflow: hidden;
+      z-index:1;
+      transition: opacity 0.4s ease, height 0.4s ease;
+    }
+    .tab-group section.active {
+      opacity: 1;
+      height: auto;
+      overflow: visible;
+    }
+    .tab-nav {
+      list-style: none;
+      margin: -2.5em -1px 0 0;
+      padding: 0;
+      height: 2.5em;
+      overflow: hidden;
+    }
+    .tab-nav li {
+      display: inline;
+    }
+    .tab-nav li a {
+      top: 1px;
+      position: relative;
+      display: block;
+      float: left;
+      border-radius: 10px 10px 0 0;
+      background: #eee;
+      line-height: 2em;
+      padding: 0 1em;
+      text-decoration: none;
+      color: grey;
+      margin-top: .5em;
+      margin-right: 1px;
+      font-size:14px;
+      transition: background .2s ease, line-height .2s ease, margin .2s ease;
+    }
+    .tab-nav li.active a {
+      background: #BD2224;
+      color: white;
+      line-height: 2.5em;
+      margin-top: 0;
+      font-size:14px;
+    }
